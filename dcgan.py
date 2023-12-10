@@ -34,7 +34,7 @@ class DCGAN():
 		self.D_real, _ = self.discriminator(self.X)
 		self.D_fake, _ = self.discriminator(self.G_sample, reuse = True)
 		
-		# loss
+		# loss F
 		self.D_loss = tf.reduce_mean(tf.nn.sigmoid_cross_entropy_with_logits(logits=self.D_real, labels=tf.ones_like(self.D_real))) + tf.reduce_mean(tf.nn.sigmoid_cross_entropy_with_logits(logits=self.D_fake, labels=tf.zeros_like(self.D_fake)))
 		self.G_loss = tf.reduce_mean(tf.nn.sigmoid_cross_entropy_with_logits(logits=self.D_fake, labels=tf.ones_like(self.D_fake)))
 
